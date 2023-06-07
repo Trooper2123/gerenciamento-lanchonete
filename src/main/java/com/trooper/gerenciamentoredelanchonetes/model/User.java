@@ -2,47 +2,39 @@ package com.trooper.gerenciamentoredelanchonetes.model;
 
 import lombok.Data;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
+
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Id
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", unique = true, nullable = false, length = 100)
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "username", unique = true, nullable = false, length = 100)
+    private String username;
+
+    @Column(name = "password", nullable = false, length = 100)
     private String password;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 100)
     private String name;
-
-    @Column(name = "phone", nullable = false)
-    private String phone;
-
-
-    @Column(name = "bday", nullable = false)
-    private String bday;
-
-    @Column(name="store",nullable = false)
-    private Long storeId;
-
-    @Column(name="access_level", nullable = false)
-    private  AccessLevel accessLevel;
 
     @Column(name = "create_time", nullable = false)
     private LocalDateTime createTime;
 
-    @Column(name = "update_time", nullable = false)
-    private LocalDateTime updateTime;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private Role role;
 
-
-
-
+    @Transient
+    private String token;
 }

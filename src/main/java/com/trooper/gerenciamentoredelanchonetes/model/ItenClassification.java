@@ -2,9 +2,8 @@ package com.trooper.gerenciamentoredelanchonetes.model;
 
 public enum ItenClassification {
 
-    DESERT,
+    FOOD,
     DRINK,
-    FOOD
-
+    DESERT;
 
 }

@@ -2,9 +2,10 @@ package com.trooper.gerenciamentoredelanchonetes.model;
 
 import lombok.Data;
 
-import javax.management.relation.Role;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
 
 @Data
 @Entity
@@ -37,4 +38,6 @@ public class User {
 
     @Transient
     private String token;
+
+
 }

@@ -4,8 +4,6 @@ import com.trooper.gerenciamentoredelanchonetes.model.Role;
 import com.trooper.gerenciamentoredelanchonetes.model.User;
 import com.trooper.gerenciamentoredelanchonetes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.BeanDefinitionDsl;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,9 +16,6 @@ public class UserService implements UserServiceImpl {
     @Autowired
     private UserRepository userRepository;
 
-    //@Autowired
-    //private PasswordEncoder passwordEncoder;
-
     @Override
     public User saveUser(User user){
 
@@ -29,8 +24,6 @@ public class UserService implements UserServiceImpl {
         } else {
             user.setRole(Role.USER);
         }
-        //user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setPassword(user.getPassword());
         user.setCreateTime(LocalDateTime.now());
 
         return userRepository.save(user);

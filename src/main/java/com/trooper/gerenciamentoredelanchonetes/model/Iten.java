@@ -20,7 +20,7 @@ public class Iten {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    @Column(name = "description", nullable = false, length = 1000)
+    @Column(name = "description", nullable = true, length = 1000)
     private String description;
 
     @Column(name = "price", nullable = false)
@@ -35,4 +35,7 @@ public class Iten {
 
     @Column(name = "create_time", nullable = false)
     private LocalDateTime createTime;
+
+    @Column( name ="update_time", nullable = true)
+    private LocalDateTime updateTime;
 }

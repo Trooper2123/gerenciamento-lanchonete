@@ -2,7 +2,6 @@ package com.trooper.gerenciamentoredelanchonetes.controller;
 
 import com.trooper.gerenciamentoredelanchonetes.model.User;
 import com.trooper.gerenciamentoredelanchonetes.service.UserServiceImpl;
-import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> findAllUsers(@PathVariable String email) {
+    public List<User> findAllUsers() {
         return userService.findAllUsers();
     }
 

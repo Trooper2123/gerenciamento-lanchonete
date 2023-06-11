@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -17,8 +18,8 @@ public class Purchase {
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @Column(name = "book_id", nullable = false)
-    private Long bookId;
+    @Column(name = "iten_id", nullable = false)
+    private List<Iten> itenId;
 
     @Column(name = "price", nullable = false)
     private Double price;

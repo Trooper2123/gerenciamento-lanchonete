@@ -4,5 +4,8 @@ public enum Status {
 
     PROCESSING,
     PREPARING,
-    DELIVERED;
+    DELIVERING,
+    DELIVERED,
+    FINISHED,
+    CANCELED;
 }

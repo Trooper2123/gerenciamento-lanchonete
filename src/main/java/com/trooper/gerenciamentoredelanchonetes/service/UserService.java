@@ -19,16 +19,19 @@ public class UserService implements UserServiceImpl {
 
 
     @Override
-    public User saveUser(User user){
+    public User saveUser(User user) throws Exception {
         Random random = new Random();
-        if (userRepository.findByEmail(user.getEmail()) == null){
+
+           if(userRepository.findByEmail(user.getEmail()) == null) {
             if(userRepository.findByRole(Role.MANAGER) == null){
                 user.setRole(Role.MANAGER);
             } else {
                 user.setRole(Role.USER);
             }
-        }
-        user.setCreateTime(LocalDateTime.now());
+        } else {
+               throw new Exception("Email já cadastrado");
+           }
+           user.setCreateTime(LocalDateTime.now());
         user.setId(random.nextLong());
         return userRepository.save(user);
     }
@@ -45,9 +48,12 @@ public class UserService implements UserServiceImpl {
 
     @Override
     @Transactional
-    public void deleteByEmail(String email){
-        if(userRepository.findByEmail(email).getRole() != Role.MANAGER)
+    public void deleteByEmail(String email) throws Exception {
+        if(userRepository.findByEmail(email).getRole() != Role.MANAGER){
             userRepository.deleteByEmail(email);
+        }else{
+            throw new Exception("Este usuário não pode ser deletado");
+        }
     }
 
 

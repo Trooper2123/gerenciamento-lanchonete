@@ -4,10 +4,12 @@ import com.trooper.gerenciamentoredelanchonetes.model.Iten;
 import com.trooper.gerenciamentoredelanchonetes.repository.ItenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class ItenService implements ItenServiceImpl {
@@ -17,6 +19,8 @@ public class ItenService implements ItenServiceImpl {
 
     @Override
     public void saveIten(Iten iten) {
+        Random random = new Random();
+        iten.setId(random.nextLong());
         iten.setCreateTime(LocalDateTime.now());
     }
 
@@ -26,9 +30,11 @@ public class ItenService implements ItenServiceImpl {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(Long id) throws Exception {
         if (itenRepository.findById(id).get().getQuantity() != 0) {
             itenRepository.deleteById(id);
+        } else {
+            throw new Exception("Iten não pode ser deletado, pois possui estoque");
         }
     }
 

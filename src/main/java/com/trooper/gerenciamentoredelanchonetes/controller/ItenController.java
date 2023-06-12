@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/itens")//pre-path
+@RequestMapping("api/itens")
 public class ItenController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class ItenController {
     public List<Iten> findAll(){return itenService.findAllItens();}
 
     @DeleteMapping("{id}")
-    public void deleteItenById(@PathVariable Long id){itenService.deleteById(id);}
+    public void deleteItenById (@PathVariable Long id) throws Exception{itenService.deleteById(id);}
 
     @PutMapping("sell/{id}/{quantity}")
     public void sellIten(@PathVariable Long id, int quantity){itenService.updateItenById(id,-quantity);}

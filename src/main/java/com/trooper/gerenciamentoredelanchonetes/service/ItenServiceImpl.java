@@ -11,7 +11,7 @@ public interface ItenServiceImpl {
 
     List<Iten> findAllItens();
 
-    void deleteById(Long id);
+    void deleteById(Long id) throws Exception;
 
     Optional<Iten> findItenById(Long id);
 

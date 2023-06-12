@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface UserServiceImpl {
 
-    User saveUser(User user);
+    User saveUser(User user) throws Exception;
 
     List<User>  findAllUsers();
 
-    void deleteByEmail(String email);
+    void deleteByEmail(String email) throws Exception;
 
     User findUserByEmail(String email);
 

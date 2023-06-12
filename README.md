@@ -13,3 +13,5 @@ Para acesso a documentação:  http://localhost:8080/swagger-ui/#/
 - Implementação de filiais
 - Implementação de módulo de segurança 
 - Melhorar erros mostrados ao usuário
+- Compra poder aceitar mais de um iten
+- Join de iten ao pesquisar compra

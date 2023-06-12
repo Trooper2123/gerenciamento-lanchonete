@@ -4,12 +4,11 @@ import com.trooper.gerenciamentoredelanchonetes.model.Iten;
 import com.trooper.gerenciamentoredelanchonetes.repository.ItenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 @Service
 public class ItenService implements ItenServiceImpl {
@@ -19,9 +18,8 @@ public class ItenService implements ItenServiceImpl {
 
     @Override
     public void saveIten(Iten iten) {
-        Random random = new Random();
-        iten.setId(random.nextLong());
         iten.setCreateTime(LocalDateTime.now());
+        itenRepository.save(iten);
     }
 
     @Override
@@ -49,10 +47,14 @@ public class ItenService implements ItenServiceImpl {
     }
 
     @Override
-    public void updateItenById(Long id, int quantity) {
-        Optional<Iten> updated = itenRepository.findById(id);
-        updated.get().setQuantity(updated.get().getQuantity() + quantity);
-        updated.get().setUpdateTime(LocalDateTime.now());
+    @Transactional
+    public void updateItenById(Long id, Integer quantity,LocalDateTime updateTime){
+        if (itenRepository.findById(id).isEmpty()){
+
+        }else {
+            itenRepository.updateQuantity(id,quantity, LocalDateTime.now());
+        }
+
 
 
     }

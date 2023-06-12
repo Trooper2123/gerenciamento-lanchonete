@@ -13,6 +13,7 @@ public class Iten {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iten_id", nullable = false, length = 100)
     private Long id;
 
@@ -26,7 +27,7 @@ public class Iten {
     private Double price;
 
     @Column(name = "quantity", nullable = false)
-    private int quantity;
+    private Integer quantity;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "classification", nullable = false)

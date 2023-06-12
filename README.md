@@ -1,10 +1,11 @@
 # gerenciamento-lanchonete
 Api de gerenciamento de lanchonete.
 
+baixe o projeto e rode na ide de sua preferencia
 
 Antes de rodar o projeto verifique se as credenciais constantes em src/main/resources/application.properties estão conforme sua instalação do PostgreSQL.
 
-Para acesso a documentação:  http://localhost:8080/swagger-ui/#/ 
+Para acesso a documentação:  http://localhost:8080/swagger-ui/#/  com o program já inicialicado
 
 
 

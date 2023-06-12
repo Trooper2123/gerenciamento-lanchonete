@@ -16,3 +16,4 @@ Para acesso a documentação:  http://localhost:8080/swagger-ui/#/  com o progra
 - Melhorar erros mostrados ao usuário
 - Compra poder aceitar mais de um iten
 - Join de iten ao pesquisar compra
+- Testes!!!

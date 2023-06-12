@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository  extends JpaRepository<User, String>{
 
-    boolean findByRole(Role role);
+    User findByRole(Role role);
 
     User findByEmail(String email);
 

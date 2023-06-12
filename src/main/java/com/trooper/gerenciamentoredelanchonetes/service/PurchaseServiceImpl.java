@@ -1,15 +1,16 @@
 package com.trooper.gerenciamentoredelanchonetes.service;
 
 import com.trooper.gerenciamentoredelanchonetes.model.Purchase;
+import com.trooper.gerenciamentoredelanchonetes.model.Status;
 
 public interface PurchaseServiceImpl {
 
     Purchase savePurchase(Purchase purchase);
 
-    Purchase findPurchaseByUserName(String  userName);
+    Purchase findPurchaseByUserId(Long userId);
 
-    void updatePurchase(Long id);
+    void updatePurchase(Long id, Status status);
 
-    void deletePurchase(Long id);
+    void cancelPurchase(Long id);
 
 }

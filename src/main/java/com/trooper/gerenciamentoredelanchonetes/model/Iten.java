@@ -3,7 +3,6 @@ package com.trooper.gerenciamentoredelanchonetes.model;
 
 import lombok.Data;
 
-import javax.management.relation.Role;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -15,6 +14,7 @@ public class Iten {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "iten_id", nullable = false, length = 100)
     private Long id;
 
     @Column(name = "name", nullable = false, length = 100)

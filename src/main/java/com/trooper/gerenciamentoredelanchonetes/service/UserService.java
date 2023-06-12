@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class UserService implements UserServiceImpl {
@@ -16,16 +17,19 @@ public class UserService implements UserServiceImpl {
     @Autowired
     private UserRepository userRepository;
 
+
     @Override
     public User saveUser(User user){
-
-        if(!userRepository.findByRole(Role.MANAGER)){
-            user.setRole(Role.MANAGER);
-        } else {
-            user.setRole(Role.USER);
+        Random random = new Random();
+        if (userRepository.findByEmail(user.getEmail()) == null){
+            if(userRepository.findByRole(Role.MANAGER) == null){
+                user.setRole(Role.MANAGER);
+            } else {
+                user.setRole(Role.USER);
+            }
         }
         user.setCreateTime(LocalDateTime.now());
-
+        user.setId(random.nextLong());
         return userRepository.save(user);
     }
 

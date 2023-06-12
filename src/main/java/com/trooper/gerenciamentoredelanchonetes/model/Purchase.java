@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 @Data
 @Entity
@@ -16,13 +15,14 @@ public class Purchase {
     @Column(name = "purchase_id", nullable = false, length = 100)
     private Long id;
 
-    @JoinColumn(name = "user_id")
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @JoinColumn(name = "iten_id")
-    @Column(name = "iten_id", nullable = false)
-    private ArrayList<Iten> itensId;
+    @Column(name = "iten", nullable = false)
+    private Long itenId;
+
+    @Column(name = "itenQuantity", nullable = false)
+    private Integer itenQuantity;
 
     @Column(name = "price", nullable = false)
     private Double price;
@@ -34,7 +34,7 @@ public class Purchase {
     @Column(name = "status", nullable = false)
     private Status status;
 
-    @Column(name = "updatedeAt", nullable = false)
+    @Column(name = "updatedAt", nullable = true)
     private LocalDateTime updatedAt;
 
 }
